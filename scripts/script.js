@@ -6,18 +6,16 @@ let deposit = false,
     period = 0,
     amoutCount = 0;
 
-
-
 let money = parseInt(prompt('Ваш месячный доход?'));
-// //let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую?');
+let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую?');
 
-// //let expenses1 = prompt('Введите обязательную статью расходов?');
+let expenses1 = prompt('Введите обязательную статью расходов?');
 let amount1 = parseInt(prompt('Во сколько это обойдется?'));
-// console.log(amount1);
+console.log(amount1);
 
-// //let expenses2 = prompt('Введите обязательную статью расходов?');
+let expenses2 = prompt('Введите обязательную статью расходов?');
 let amount2 = parseInt(prompt('Во сколько это обойдется?'));
-// console.log(amount2);
+console.log(amount2);
 
 //==========================================4lesson==========================
 
@@ -51,36 +49,48 @@ const getTargetMonth = function () {
 };
 console.log("Время достижения цели : " + getTargetMonth());
 
-
 //5) Удалить из кода переменную budgetMonth 
 // этой переменной нет
 
 // 6) budgetDay высчитываем исходя из значения месячного накопления (accumulatedMonth)
 let budgetDay = getAccumulatedMonth() / 30;
 
-
-
-//==========================================4lesson==========================
-
-
-
-
-
-
 Math.floor(budgetDay);
 
 console.log("Чистая прибыль в день с учетом всех расходов : " + budgetDay); // dnevnoi dohod
+const getStatusIncome = function (budgetDay) {
 
-
-
-
-if (budgetDay < 0)
-    console.log("Что то пошло не так");
-else if (budgetDay >= 1200)
-    console.log("У вас высокий уровень дохода");
-else if (budgetDay >= 600 || budgetDay <= 1199)
-    console.log("У вас средний уровень дохода");
-else
-    console.log("К сожалению у вас уровень дохода ниже среднего");
+    if (budgetDay < 0)
+        return ("Что то пошло не так");
+    else if (budgetDay >= 1200)
+        return ("У вас высокий уровень дохода");
+    else if (budgetDay >= 600 || budgetDay <= 1199)
+        return ("У вас средний уровень дохода");
+    else
+        return ("К сожалению у вас уровень дохода ниже среднего");
+}
 
 deposit = confirm('Есть ли у вас депозит в банке?');
+
+
+// 7) Почистить консоль логи и добавить недостающие, должны остаться:
+//     вызовы функции showTypeOf
+//     Расходы за месяц вызов getExpensesMonth
+//     Вывод возможных расходов в виде массива(addExpenses)
+//     Cрок достижения цели в месяцах(результат вызова функции getTargetMonth)
+//     Бюджет на день(budgetDay)
+//     вызов функции getStatusIncome
+
+
+console.clear();
+
+//     вызовы функции showTypeOf -- не нашел описания функции - просто вызов всех функций??
+
+console.log(getExpensesMonth());
+console.log(addExpenses);
+console.log(getTargetMonth());
+console.log(budgetDay);
+console.log(getStatusIncome(deposit)); // 
+
+
+//==========================================4lesson==========================
