@@ -1,31 +1,50 @@
-// let num = 266219,
-//     numArray,
-//     sum = 1;
-// numArray = String(num);
-// numArray = numArray.match(/.{1}/g); // -- хотел бы лучше узнать об этом
-// console.log(numArray);
-// for (let i = 0; i < numArray.length; i++) {
-//     sum = sum * numArray[i];
-//     console.log(sum);
-// }
-// numArray = 0;
-// sum = (sum * sum) * sum;
-// numArray = String(sum);
-// // numArray = numArray.match(/.{1}/g);
-// console.log("Число :  " + numArray);
-
-// console.log("Число :  " + numArray.substr(0, 2));
-
-
-
-const checkString = function (itemForCheck) {
-    if (typeof itemForCheck != 'string') {
-
-        return "PLS CHECK AGAIN, NOT A STRING!";
-    } else {
-        return itemForCheck.substr(0, 30) + "...";
-    }
-
+"use strict";
+let isNumber = function (n) {
+    return !isNaN(parseFloat(n) && isFinite(n));
 };
-console.log(checkString(121));
-console.log(checkString("123456789123456789123456789000ERROR"));
+
+function getRandom(min, max) {
+    return Math.random() * (max - min) + min;
+}
+
+let gameBot = function () {
+    let gameNumber = Math.ceil(getRandom(1, 100));
+    let flag = 10;
+    console.log(gameNumber);
+    let gameStart = function (gameNumber) {
+        let userNumber = prompt("Введите число от 1  до 100");
+
+        console.log("type of : -" + typeof userNumber);
+
+        if (isNumber(userNumber)) {
+            //--
+            if (flag >= 2) {
+                if (userNumber > gameNumber) {
+                    flag--;
+                    alert("Загаданное число меньше, осталось попыток : " + flag);
+                    gameStart(gameNumber);
+                } else if (userNumber < gameNumber) {
+                    flag--;
+                    alert("Загаданное число больше, осталось попыток : " + flag);
+                    gameStart(gameNumber);
+                } else {
+                    let win = "Загаданное число : " + gameNumber + " WIN!!! \n";
+                    let chose = confirm(win + "Хотели бы сыграть еще?");
+                    if (chose) gameBot();
+                    else alert("Thanks for game!");
+                }
+            } else {
+                alert("У вас не осталось попыток :c");
+            }
+
+            //--
+        } else if (typeof userNumber === "string") {
+            alert("Введите число!");
+            gameStart(gameNumber);
+        } else {
+            return alert("Game Canceled");
+        }
+    };
+    return gameStart(gameNumber);
+};
+gameBot();
