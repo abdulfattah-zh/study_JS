@@ -8,11 +8,12 @@ let money;
 let start = function () {
   while (!isNumber(money)) {
     money = +prompt("Ваш месячный доход?", 20000);
+    return money;
   }
 };
 
 let appData = {
-  budget: money,
+  budget: start(),
   budgetDay: 0,
   budgetMonth: 0,
   income: {},
@@ -54,7 +55,7 @@ let appData = {
     appData.budgetMonth = money - amoutCount;
     appData.budgetDay = Math.floor(appData.budgetMonth / 30);
     return appData.budgetDay;
-    // return money - buffer;
+    // return money- buffer;
   },
   getTargetMonth: function () {
     // let buffer = appData.getExpensesMonth();
@@ -79,6 +80,7 @@ let appData = {
   //
 };
 start();
+
 appData.asking();
 console.log("Расходы за месяц : " + appData.getExpensesMonth());
 console.log(
@@ -97,5 +99,4 @@ for (let key in appData) {
   console.log("Ключ:  " + key + "   Значение: " + appData[key]);
   console.log("            ");
 }
-
 //==========================================7lesson==========================
