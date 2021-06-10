@@ -70,11 +70,32 @@ let appData = {
 
     //from GEM to asking
     //let sum = 0;
-
-    for (let i = 0; i < 2; i++) {
-      appData.expenses[
-        prompt("Введите обязательную статью расходов?", `sadik${i + 1}`)
-      ] = +prompt("Во сколько это обойдется?", +(i + 1) * 1000);
+    let flag = 2;
+    for (let i = 1; i > 0; i++) {
+      // appData.expenses[
+      //   prompt("Введите обязательную статью расходов?", `sadik${i + 1}`)
+      // ] = +prompt("Во сколько это обойдется?", +(i + 1) * 1000);
+      if(flag != 0){
+        let rashodName = prompt("Введите обязательную статью расходов?", `sadik`);
+        if(isString(rashodName)){
+          appData.expenses[rashodName]
+          let rashodPrice = prompt("Во сколько это обойдется?", 1000);
+          if(isNumber(rashodPrice)){
+            appData.expenses[rashodName] = rashodPrice;
+            flag--;
+          }
+          else{
+            alert("Вы ввели неверное значение, Повторите попытку");
+          }
+        }
+        else{
+          alert("Вы ввели неверное значение, Повторите попытку");
+        }
+      }
+      else{
+        break;
+      }
+        
     }
     console.log(appData.expenses);
     //return sum;
