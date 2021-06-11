@@ -14,9 +14,9 @@ let start = function () {
     
   }
 };
-
+start();
 let appData = {
-  budget: start(),
+  budget: money,
   budgetDay: 0,
   budgetMonth: 0,
   income: {},
@@ -32,32 +32,24 @@ let appData = {
   period: 3,
   asking: function () {
     if (confirm("Есть ли у вас дополнительный источник заработка ?")) {
+      console.log(appData.budget);
 
-        for(let i = 1; i > 0; i++){
+      let itemIncome;
+      let cashIncome;
 
-        let itemIncome = prompt(
-          "Какой у вас есть дополнительный заработок ?",
-          "Таксую"
-        );
-        this.incomeKey = itemIncome;
-        console.log(typeof itemIncome);
-        if(isString(itemIncome)){
-          let cashIncome = +prompt(
-          "Cколько в месяц вы на этом зарабатываете ?",
-          10000
-        );
-          if(isNumber(cashIncome)){
-            appData.income[itemIncome] = cashIncome;
-            break;
+        for(let i = 0; i < 1; i++){
+          do {
+            itemIncome = prompt("Какой у вас есть дополнительный заработок ?","Таксую");
+            do {
+              cashIncome = +prompt("Cколько в месяц вы на этом зарабатываете ?", 10000);
+            }
+            while(!isNumber(cashIncome));
           }
-          else{
-            alert("Вы ввели неверное значение");
-          }
-        }
-        else{
-          alert("Вы ввели неверное значение");
-        }
+          while(!isString(itemIncome));
 
+          this.incomeKey = itemIncome;
+
+          this.income[itemIncome] = cashIncome;
       }
     }
 
@@ -70,36 +62,29 @@ let appData = {
 
     //from GEM to asking
     //let sum = 0;
-    let flag = 2;
-    for (let i = 1; i > 0; i++) {
+    let rashodName;
+    let rashodPrice;
+
+    for (let i = 0; i < 2; i++) {
       // appData.expenses[
       //   prompt("Введите обязательную статью расходов?", `sadik${i + 1}`)
       // ] = +prompt("Во сколько это обойдется?", +(i + 1) * 1000);
-      if(flag != 0){
-        let rashodName = prompt("Введите обязательную статью расходов?", `sadik`);
-        if(isString(rashodName)){
-          appData.expenses[rashodName]
-          let rashodPrice = +prompt("Во сколько это обойдется?", 1000);
-          if(isNumber(rashodPrice)){
-            appData.expenses[rashodName] = rashodPrice;
-            flag--;
-          }
-          else{
-            alert("Вы ввели неверное значение, Повторите попытку");
-          }
+      do {
+        rashodName = prompt("Введите обязательную статью расходов?", `sadik`);
+        do {
+          rashodPrice = +prompt("Во сколько это обойдется?", 1000);
         }
-        else{
-          alert("Вы ввели неверное значение, Повторите попытку");
-        }
+        while(!isNumber(rashodPrice));
       }
-      else{
-        break;
-      }
-        
-    }
-    console.log(appData.expenses);
+      while(!isString(rashodName));
+
+      appData.expenses[rashodName];
+
+      appData.expenses[rashodName] = rashodPrice;
     //return sum;
     //GEM
+    }
+    console.log(appData.expenses);
   },
   getExpensesMonth: function () {
     let sum = 0;
@@ -111,11 +96,21 @@ let appData = {
   },
   getBudget: function () {
     // let buffer = appData.getExpensesMonth();
-    let amoutCount = appData.getExpensesMonth();
-    money = money + appData.income[appData.incomeKey];
-    appData.budgetMonth = money - amoutCount;
+    let amoutCount = 0;
+    amoutCount = appData.getExpensesMonth();
+    let summX = appData.income[appData.incomeKey];
+    console.log("summX :" + summX);
+    if (isNumber(summX)){
+    appData.budgetMonth = appData.budget + summX;
+    appData.budgetMonth = appData.budget - amoutCount;
     appData.budgetDay = Math.floor(appData.budgetMonth / 30);
     return appData.budgetDay;
+  }
+  else{
+    console.log(appData.budgetMonth = appData.budget - amoutCount);
+    console.log(appData.budgetDay = Math.floor(appData.budgetMonth / 30));
+    return appData.budgetDay;
+  }
     // return money- buffer;
   },
   getTargetMonth: function () {
@@ -167,7 +162,7 @@ let appData = {
   },
   returnAddExpenses: function () {},
 };
-start();
+
 
 appData.asking();
 
