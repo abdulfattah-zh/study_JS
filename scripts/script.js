@@ -79,7 +79,7 @@ let appData = {
         let rashodName = prompt("Введите обязательную статью расходов?", `sadik`);
         if(isString(rashodName)){
           appData.expenses[rashodName]
-          let rashodPrice = prompt("Во сколько это обойдется?", 1000);
+          let rashodPrice = +prompt("Во сколько это обойдется?", 1000);
           if(isNumber(rashodPrice)){
             appData.expenses[rashodName] = rashodPrice;
             flag--;
@@ -180,10 +180,19 @@ console.log(
   "Чистая прибыль в день с учетом всех расходов : " + appData.getBudget()
 ); // dnevnoi dohod
 
-
+let rowEx = '';
 for(let i = 0; i < appData.addExpenses.length; i++){
-  console.log(appData.addExpenses[i].charAt(0).toUpperCase() + appData.addExpenses[i].substr(1, appData.addExpenses[i].length));
+
+  if(appData.addExpenses[i].charAt(0) !== ' '){
+    rowEx = rowEx + " " + appData.addExpenses[i].charAt(0).toUpperCase()
+    + appData.addExpenses[i].substr(1, appData.addExpenses[i].length);
+  }
+  else{
+    rowEx = rowEx + " " + appData.addExpenses[i].charAt(1).toUpperCase()
+    + appData.addExpenses[i].substr(2, appData.addExpenses[i].length);
+  }
 }
+console.log(rowEx);
 // 
 //appData.addExpenses[i].charAt(0).toUpperCase() +
 
