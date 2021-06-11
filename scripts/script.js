@@ -231,19 +231,19 @@ const additional_income_item = document.querySelectorAll('.additional_income-ite
 // e Каждый элемент в правой части программы через класс(не через querySelector),
 // которые имеют в имени класса "-value", начиная с class="budget_day-value" 
 // и заканчивая class="target_month-value">
-const result_budget_month = document.querySelector('.budget_month-value'); // Доход за месяц
+const result_budget_month = document.getElementsByClassName('.budget_month-value'); // Доход за месяц
 console.log(result_budget_month);
-const result_budget_day = document.querySelector('.budget_day-value'); // Дневной бюджет
+const result_budget_day = document.getElementsByClassName('.budget_day-value'); // Дневной бюджет
 console.log(result_budget_day);
-const result_expenses_month = document.querySelector('.expenses_month-value'); // Расход за месяц
+const result_expenses_month = document.getElementsByClassName('.expenses_month-value'); // Расход за месяц
 console.log(result_expenses_month);
-const result_additional_income = document.querySelector('.additional_income-value'); // Возможные доходы
+const result_additional_income = document.getElementsByClassName('.additional_income-value'); // Возможные доходы
 console.log(result_additional_income);
-const result_additional_expenses = document.querySelector('.additional_expenses-value'); // Возможные расходы
+const result_additional_expenses = document.getElementsByClassName('.additional_expenses-value'); // Возможные расходы
 console.log(result_additional_expenses);
-const result_income_period = document.querySelector('.income_period-value'); // Накопления за период
+const result_income_period = document.getElementsByClassName('.income_period-value'); // Накопления за период
 console.log(result_income_period);
-const result_target_month = document.querySelector('.target_month-value'); // Срок достижения цели в месяцах
+const result_target_month = document.getElementsByClassName('.target_month-value'); // Срок достижения цели в месяцах
 console.log(result_target_month);
 // f Оставшиеся поля через querySelector каждый в отдельную переменную:
 // поля ввода (input) с левой стороны и не забудьте про range.
