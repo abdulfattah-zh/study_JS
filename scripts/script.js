@@ -182,15 +182,9 @@ console.log(
 
 let rowEx = '';
 for(let i = 0; i < appData.addExpenses.length; i++){
-
-  if(appData.addExpenses[i].charAt(0) !== ' '){
+  appData.addExpenses[i] = appData.addExpenses[i].trim(); // trip used
     rowEx = rowEx + " " + appData.addExpenses[i].charAt(0).toUpperCase()
     + appData.addExpenses[i].substr(1, appData.addExpenses[i].length);
-  }
-  else{
-    rowEx = rowEx + " " + appData.addExpenses[i].charAt(1).toUpperCase()
-    + appData.addExpenses[i].substr(2, appData.addExpenses[i].length);
-  }
 }
 console.log(rowEx);
 // 
