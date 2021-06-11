@@ -79,7 +79,7 @@ let appData = {
         let rashodName = prompt("Введите обязательную статью расходов?", `sadik`);
         if(isString(rashodName)){
           appData.expenses[rashodName]
-          let rashodPrice = prompt("Во сколько это обойдется?", 1000);
+          let rashodPrice = +prompt("Во сколько это обойдется?", 1000);
           if(isNumber(rashodPrice)){
             appData.expenses[rashodName] = rashodPrice;
             flag--;
@@ -180,11 +180,16 @@ console.log(
   "Чистая прибыль в день с учетом всех расходов : " + appData.getBudget()
 ); // dnevnoi dohod
 
-
+let rowEx = '';
 for(let i = 0; i < appData.addExpenses.length; i++){
-  console.log(appData.addExpenses[i].charAt(0).toUpperCase() + appData.addExpenses[i].substr(1, appData.addExpenses[i].length));
+  appData.addExpenses[i] = appData.addExpenses[i].trim();
+    rowEx = rowEx + " " + appData.addExpenses[i].charAt(0).toUpperCase()
+    + appData.addExpenses[i].substr(1, appData.addExpenses[i].length);
 }
+console.log(rowEx);
 // 
+
+
 //appData.addExpenses[i].charAt(0).toUpperCase() +
 
 // console.log(appData.getStatusIncome(appData.deposit)); //
@@ -199,9 +204,71 @@ for(let i = 0; i < appData.addExpenses.length; i++){
 //   console.log("Ключ:  " + key + "   Значение: " + appData[key]);
 //   console.log("            ");
 // }
+
+
 console.log(
   appData.percentDeposit,
   appData.moneyDeposit,
   appData.calcSavedMoney()
 );
-//==========================================7lesson==========================
+//==========================================8lesson==========================
+//a Кнопку "Рассчитать" через id
+const startButton = document.getElementById('start');
+console.log(startButton);
+
+//b Кнопки “+” (плюс) через Tag, каждую в своей переменной. 
+const btn_plus_income_add = document.getElementsByTagName('button')[0];
+console.log(btn_plus_income_add);
+const btn_plus_expenses_add = document.getElementsByTagName('button')[1];
+console.log(btn_plus_income_add);
+
+//c Чекбокс по id через querySelector
+const deposit_check = document.querySelector('#deposit-check');
+console.log(deposit_check);
+
+//d Поля для ввода возможных доходов (additional_income-item) при помощи querySelectorAll
+const additional_income_item = document.querySelectorAll('.additional_income-item');
+//вывыести все данные 
+// for (let elem of additional_income_item) {
+//   console.log(elem.innerHTML); 
+// }
+
+// e Каждый элемент в правой части программы через класс(не через querySelector),
+// которые имеют в имени класса "-value", начиная с class="budget_day-value" 
+// и заканчивая class="target_month-value">
+const result_budget_month = document.querySelector('.budget_month-value'); // Доход за месяц
+console.log(result_budget_month);
+const result_budget_day = document.querySelector('.budget_day-value'); // Дневной бюджет
+console.log(result_budget_day);
+const result_expenses_month = document.querySelector('.expenses_month-value'); // Расход за месяц
+console.log(result_expenses_month);
+const result_additional_income = document.querySelector('.additional_income-value'); // Возможные доходы
+console.log(result_additional_income);
+const result_additional_expenses = document.querySelector('.additional_expenses-value'); // Возможные расходы
+console.log(result_additional_expenses);
+const result_income_period = document.querySelector('.income_period-value'); // Накопления за период
+console.log(result_income_period);
+const result_target_month = document.querySelector('.target_month-value'); // Срок достижения цели в месяцах
+console.log(result_target_month);
+// f Оставшиеся поля через querySelector каждый в отдельную переменную:
+// поля ввода (input) с левой стороны и не забудьте про range.
+
+const salary_amount_input = document.querySelector(".salary-amount"); // Месячный доход*
+console.log(salary_amount_input);
+const income_title_input = document.querySelector(".income-title"); // Дополнительный доход
+const income_amount_input = document.querySelector(".income-amount");
+console.log(income_title_input);
+console.log(income_amount_input);
+
+const expenses_title_input = document.querySelector(".expenses-title"); // Обязательные расходы
+const expenses_amount_input = document.querySelector(".expenses-amount");
+console.log(expenses_title_input);
+console.log(expenses_amount_input);
+
+
+const additional_expenses_item_input = document.querySelector(".additional_expenses-item"); // Возможные расходы 
+console.log(additional_expenses_item_input);
+
+const period_select_input = document.querySelector(".period-select");
+console.log(period_select_input);
+
