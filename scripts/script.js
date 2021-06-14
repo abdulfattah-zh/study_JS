@@ -63,11 +63,13 @@ let appData = {
     appData.budget = +salaryAmountInput.value;
     console.log('salaryAmount.value', salaryAmountInput.value);
 
+    appData.getButtonStatus();
     appData.getExpenses();
     appData.getIncomes();
     appData.getBudget();
     appData.getAddExpenses();
     appData.getAddIncome();
+    
     appData.getPeriod();
     appData.showResults();
 
@@ -79,6 +81,16 @@ let appData = {
     titlePeriodAmount.textContent = periodSelectRage.value;
     incomePeriodValue.value = appData.budgetMonth *  periodSelectRage.value;
   },
+  getButtonStatus: function(){
+    if(salaryAmountInput.value !== ''){
+      start.style.backgroundColor = "green";
+      console.log("sssssssssssss");
+    }
+    else{
+      start.style.backgroundColor = "gray";
+    }
+  },
+
   addIncomesBlock : function(){
     let cloneIncomesItem = incomesItems[0].cloneNode(true);
     incomesItems[0].parentNode.insertBefore(cloneIncomesItem, incomesPlus);
@@ -218,11 +230,14 @@ let appData = {
 };
 
 
-
+salaryAmountInput.addEventListener('change', appData.getButtonStatus);
 start.addEventListener('click', appData.start);
 expensesPlus.addEventListener('click', appData.addExpensesBlock);
 incomesPlus.addEventListener('click', appData.addIncomesBlock);
 periodSelectRage.addEventListener('change', appData.getPeriod);
+
+
+
 
 console.log(periodSelectRage.value);
 
