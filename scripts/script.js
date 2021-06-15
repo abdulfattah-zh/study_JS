@@ -179,11 +179,12 @@ let appData = {
       console.log("LOLYOU: -----0 + " + sum);
     }
     console.log("XDS:   " +  typeof sum);
+
     return sum;
   },
   getBudget: function () {
     console.log(appData.expensesMonth = appData.getExpensesMonth());
-
+    console.log(appData.incomeMonth = appData.getIncomesMonth());
     console.log(appData.budgetMonth = appData.budget + appData.incomeMonth);
     console.log(appData.budgetMonth = appData.budgetMonth - appData.expensesMonth);
     console.log(appData.budgetDay = Math.floor(appData.budgetMonth / 30));
