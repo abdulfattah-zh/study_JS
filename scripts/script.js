@@ -33,12 +33,11 @@ const render = function () {
             item.completed = !item.completed;
             render();
         });
-        const btnTodoremove = li.querySelector('.todo-remove');
-        btnTodoremove.addEventListener('click', function () {
-            console.log("delete");
-            console.log(todoData.item);
-            this.parentNode.removeChild(this);
-            delete todoData.item;
+
+        const todoRemove = li.querySelector('.todo-remove');
+        todoRemove.addEventListener('click', () => {
+            todoData.splice(item, 1);
+            localStorage.setItem('todo', JSON.stringify(item));
             render();
         });
 
@@ -52,7 +51,11 @@ todoControl.addEventListener("submit", function (event) {
             completed: false
         };
         todoData.push(newTodo);
+        todoData.forEach(function (item) {
+            localStorage.setItem('todo', JSON.stringify(item));
+        });
         headerInput.value = '';
+
         render();
     }
 
