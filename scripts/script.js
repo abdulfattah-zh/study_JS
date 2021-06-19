@@ -4,13 +4,10 @@ let todoControl = document.querySelector(".todo-control"),
     headerInput = document.querySelector(".header-input"),
     todoList = document.querySelector(".todo-list"),
     todoCompleted = document.querySelector(".todo-completed");
-
 let todoData = JSON.parse(localStorage.getItem('todo')) || [];
-
 const render = function () {
     todoList.textContent = '';
     todoCompleted.textContent = '';
-
     todoData.forEach(function (item) {
         let li = document.createElement('li');
         li.classList.add('todo-item');
@@ -29,11 +26,9 @@ const render = function () {
             item.completed = !item.completed;
             render();
         });
-
         const todoRemove = li.querySelector('.todo-remove');
         todoRemove.addEventListener('click', () => {
             todoData.splice(item, 1);
-
             render();
         });
         localStorage.setItem('todo', JSON.stringify(todoData));
@@ -52,3 +47,4 @@ todoControl.addEventListener("submit", function (event) {
     }
 });
 render();
+//
