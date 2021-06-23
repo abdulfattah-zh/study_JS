@@ -59,6 +59,9 @@ AppData.prototype.start = function () {
       cancel.style.display = 'block'
       start.style.display = "none";
       inputS.forEach(item => item.disabled = true);
+      incomesPlus.disabled = true;
+      expensesPlus.disabled = true;
+      periodSelectRage.disabled = false;
       this.budget = +salaryAmountInput.value;
       this.getButtonStatus();
       this.getExpenses();
@@ -78,6 +81,8 @@ AppData.prototype.cancel = function () {
     item.value = ""
     item.disabled = false
   });
+  incomesPlus.disabled = false;
+  expensesPlus.disabled = false;
 
   // удаление созданных блоков с расходами
   let actualExpensesItemsArray = [...document.querySelectorAll('.expenses-items')] // преобразование коллекции в массив

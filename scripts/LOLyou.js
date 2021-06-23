@@ -36,5 +36,5 @@ DomElement.prototype.addElement = function (selector, _height, _width, _bg, _fon
 
 const domElement = new DomElement();
 
-domElement.addElement('.div', );
-domElement.addElement('#div');
+domElement.addElement('.div', 100, 100, 'black', 10);
+domElement.addElement('#div', 200, 200, 'blue', 20);
