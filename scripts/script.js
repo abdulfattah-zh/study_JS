@@ -6,7 +6,7 @@ const isString = function (n) {
   return isNaN(n) && typeof n === 'string';
 };
 
-const start = document.getElementById('start'),
+let start = document.getElementById('start'),
   cancel = document.getElementById('cancel'),
   btnPlus = document.getElementsByTagName('button'),
   incomesPlus = btnPlus[0],
@@ -59,7 +59,10 @@ class AppData {
       if (isNumber(salaryAmountInput.value)) {
         cancel.style.display = 'block'
         start.style.display = "none";
+        inputS = document.querySelectorAll("input");
         inputS.forEach(item => item.disabled = true);
+        incomesPlus = btnPlus[0];
+        expensesPlus = btnPlus[1];
         incomesPlus.disabled = true;
         expensesPlus.disabled = true;
         periodSelectRage.disabled = false;
@@ -82,6 +85,8 @@ class AppData {
       item.value = ""
       item.disabled = false
     });
+    incomesPlus = btnPlus[0];
+    expensesPlus = btnPlus[1];
     incomesPlus.disabled = false;
     expensesPlus.disabled = false;
 
